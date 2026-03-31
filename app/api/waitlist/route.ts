@@ -102,8 +102,10 @@ export async function POST(req: NextRequest) {
       Source: "website",
     });
 
-    // Send confirmation email
-    await sendConfirmationEmail(name.trim(), email.trim().toLowerCase(), services);
+    // Send confirmation email — fire and forget, don't fail the submission if email fails
+    sendConfirmationEmail(name.trim(), email.trim().toLowerCase(), services).catch((err) =>
+      console.error("[/api/waitlist] Resend failed:", err)
+    );
 
     return NextResponse.json({ message: "Success." }, { status: 200 });
   } catch (err) {
