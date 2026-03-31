@@ -18,7 +18,7 @@ async function checkDuplicate(email: string): Promise<boolean> {
 async function writeToAirtable(fields: {
   Name: string;
   Email: string;
-  "Company Name": string;
+  "Company name": string;
   Services: string[];
   "Signed Up At": string;
   Source: string;
@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
     await writeToAirtable({
       Name: name.trim(),
       Email: email.trim().toLowerCase(),
-      "Company Name": company?.trim() ?? "",
+      "Company name": company?.trim() ?? "",
       Services: services,
       "Signed Up At": new Date().toISOString(),
       Source: "website",
