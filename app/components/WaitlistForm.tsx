@@ -187,7 +187,6 @@ export default function WaitlistForm() {
                       backgroundColor: selected.includes(s) ? "var(--color-green)" : "transparent",
                       borderColor: selected.includes(s) ? "var(--color-green)" : "#D1D5DB",
                     }}
-                    onClick={() => toggleService(s)}
                   >
                     {selected.includes(s) && (
                       <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
