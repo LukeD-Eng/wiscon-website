@@ -1,18 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import Airtable from "airtable";
+
+function getBase() {
+  Airtable.configure({ apiKey: process.env.AIRTABLE_API_KEY! });
+  return new Airtable().base(process.env.AIRTABLE_BASE_ID!);
+}
 
 async function checkDuplicate(email: string): Promise<boolean> {
-  const base = process.env.AIRTABLE_BASE_ID!;
+  const base = getBase();
   const table = process.env.AIRTABLE_TABLE_NAME!;
-  const key = process.env.AIRTABLE_API_KEY!;
-  const formula = encodeURIComponent(`{Email}="${email}"`);
-  const url = `https://api.airtable.com/v0/${base}/${encodeURIComponent(table)}?filterByFormula=${formula}&maxRecords=1`;
-  const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${key}` },
-  });
-  if (!res.ok) throw new Error(`Airtable lookup failed: ${res.status}`);
-  const data = await res.json();
-  return data.records.length > 0;
+  const records = await base(table)
+    .select({ filterByFormula: `{Email}="${email}"`, maxRecords: 1 })
+    .firstPage();
+  return records.length > 0;
 }
 
 async function writeToAirtable(fields: {
@@ -23,23 +24,9 @@ async function writeToAirtable(fields: {
   "Signed Up At": string;
   Source: string;
 }) {
-  const base = process.env.AIRTABLE_BASE_ID!;
+  const base = getBase();
   const table = process.env.AIRTABLE_TABLE_NAME!;
-  const key = process.env.AIRTABLE_API_KEY!;
-  const url = `https://api.airtable.com/v0/${base}/${encodeURIComponent(table)}`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${key}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ fields }),
-  });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Airtable write failed: ${res.status} ${err}`);
-  }
-  return res.json();
+  await base(table).create([{ fields }]);
 }
 
 async function sendConfirmationEmail(name: string, email: string, services: string[]) {
@@ -82,11 +69,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "At least one service must be selected." }, { status: 400 });
     }
     const validServices = ["LeadSync", "ChangeVerify", "SnagScribe"];
-    if (!services.every((s) => validServices.includes(s))) {
+    if (!services.every((s: string) => validServices.includes(s))) {
       return NextResponse.json({ error: "Invalid service selected." }, { status: 400 });
     }
 
-    // Duplicate check — non-fatal if Airtable lookup fails
+    // Duplicate check — non-fatal if lookup fails
     let isDuplicate = false;
     try {
       isDuplicate = await checkDuplicate(email.trim().toLowerCase());
@@ -107,7 +94,7 @@ export async function POST(req: NextRequest) {
       Source: "website",
     });
 
-    // Send confirmation email — fire and forget, don't fail the submission if email fails
+    // Send confirmation email — fire and forget
     sendConfirmationEmail(name.trim(), email.trim().toLowerCase(), services).catch((err) =>
       console.error("[/api/waitlist] Resend failed:", err)
     );
