@@ -86,8 +86,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid service selected." }, { status: 400 });
     }
 
-    // Duplicate check
-    const isDuplicate = await checkDuplicate(email.trim().toLowerCase());
+    // Duplicate check — non-fatal if Airtable lookup fails
+    let isDuplicate = false;
+    try {
+      isDuplicate = await checkDuplicate(email.trim().toLowerCase());
+    } catch {
+      // proceed with write if check fails
+    }
     if (isDuplicate) {
       return NextResponse.json({ message: "Already on waitlist." }, { status: 409 });
     }
