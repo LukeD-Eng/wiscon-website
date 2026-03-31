@@ -109,7 +109,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ message: "Success." }, { status: 200 });
   } catch (err) {
-    console.error("[/api/waitlist]", err);
-    return NextResponse.json({ error: "Internal server error." }, { status: 500 });
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("[/api/waitlist]", msg);
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
