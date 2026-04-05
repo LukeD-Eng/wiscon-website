@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 
 type FormState = "idle" | "loading" | "success" | "duplicate" | "error";
 
-const services = ["LeadSync", "ChangeVerify", "SnagScribe"] as const;
+const services = ["LeadGate", "VariProof", "SnagTrack", "SiteInstruct"] as const;
 type Service = (typeof services)[number];
 
 export default function WaitlistForm() {

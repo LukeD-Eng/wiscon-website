@@ -1,36 +1,47 @@
 const services = [
   {
-    id: "LeadSync",
-    name: "LeadSync",
-    tagline: "Automated Pre-Construction Qualifier",
+    id: "LeadGate",
+    name: "LeadGate",
+    tagline: "Automated Lead Qualifier",
     problem: "Tire-kickers waste 10–15 hours of your week.",
     solution:
-      "Click-to-WhatsApp triggers a bot that qualifies project type, budget, and photos — then auto-books site visits or politely declines. You only talk to real leads.",
-    target: "Residential contractors · Home service businesses",
-    price: "From $49/month",
+      "Click-to-WhatsApp bot qualifies project type, budget, and photos — books site visits for real leads, declines the rest. You only talk to people worth your time.",
+    target: "Bakkie builders · Electricians · Plumbers · Solar installers",
+    price: "R450/month",
     icon: "🔗",
   },
   {
-    id: "ChangeVerify",
-    name: "ChangeVerify",
-    tagline: "Formalized WhatsApp Change Orders",
-    problem: "Verbal change orders are the #1 cause of construction disputes.",
+    id: "VariProof",
+    name: "VariProof",
+    tagline: "WhatsApp Variation Orders",
+    problem: "Verbal change orders are the #1 cause of disputes in SA construction.",
     solution:
-      "Send a change order via bot — client receives Approve/Decline buttons on WhatsApp — digital record created — PDF confirmation sent automatically.",
-    target: "General contractors · Homeowners",
-    price: "Per order or monthly subscription",
+      "Send a /change command → both parties get Approve/Decline buttons on WhatsApp → ECTA-compliant digital record + PDF audit trail generated automatically.",
+    target: "GCs · Subcontractors · Architects · Engineers",
+    price: "R9 per variation order",
     icon: "✅",
   },
   {
-    id: "SnagScribe",
-    name: "SnagScribe",
-    tagline: "AI-Powered Punch List Management",
-    problem: "The snagging phase is chaotic — lost photos, missed items, delayed payments.",
+    id: "SnagTrack",
+    name: "SnagTrack",
+    tagline: "WhatsApp Defect Tracking",
+    problem: "Defect instructions buried in noisy group chats — no audit trail, no accountability.",
     solution:
-      "Supervisor sends a photo + voice note → AI creates a structured ticket → assigned to sub via WhatsApp → tracked to completion. No app to download.",
-    target: "Site supervisors · Subcontractors · Project managers",
-    price: "Per-project flat fee",
+      "Supervisor sends a photo → defect routed to responsible sub via WhatsApp → completion photo received → supervisor approves → timestamped audit trail. No app to download.",
+    target: "Principal contractors · Site supervisors · Subcontractors",
+    price: "From R1,500/project",
     icon: "📋",
+  },
+  {
+    id: "SiteInstruct",
+    name: "SiteInstruct",
+    tagline: "Digital Site Instruction Book",
+    problem: "Physical site instruction books get lost, disputed, and can't be searched.",
+    solution:
+      "Formalise a site instruction from a WhatsApp conversation in 60 seconds → contractor taps to sign → immutable, timestamped record stored and retrievable by both parties.",
+    target: "Architects · Engineers · Principal agents · Contractors",
+    price: "Coming Soon",
+    icon: "📄",
   },
 ];
 
@@ -43,14 +54,14 @@ export default function Services() {
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ color: "var(--color-black)" }}
           >
-            Three tools. One familiar interface.
+            Four tools. One familiar interface.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
             Each WISCON service solves a specific, costly problem in construction — delivered entirely through WhatsApp.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s) => (
             <div
               key={s.id}

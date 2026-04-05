@@ -16,7 +16,7 @@ export default function Hero() {
             Run your construction business on the app your team already uses.
           </h1>
           <p className="text-lg sm:text-xl leading-relaxed mb-10 text-gray-600">
-            WISCON brings lead qualification, change order approval, and punch list management into WhatsApp — no new app, no training, no friction.
+            WISCON brings lead qualification, variation orders, defect tracking, and site instructions into WhatsApp — no new app, no training, no friction.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a

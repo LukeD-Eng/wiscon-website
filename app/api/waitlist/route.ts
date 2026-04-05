@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     if (!Array.isArray(services) || services.length === 0) {
       return NextResponse.json({ error: "At least one service must be selected." }, { status: 400 });
     }
-    const validServices = ["LeadSync", "ChangeVerify", "SnagScribe"];
+    const validServices = ["LeadGate", "VariProof", "SnagTrack", "SiteInstruct"];
     if (!services.every((s: string) => validServices.includes(s))) {
       return NextResponse.json({ error: "Invalid service selected." }, { status: 400 });
     }
@@ -103,6 +103,6 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("[/api/waitlist]", msg);
-    return NextResponse.json({ error: msg }, { status: 500 });
+    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
   }
 }
