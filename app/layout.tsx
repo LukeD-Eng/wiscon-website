@@ -9,13 +9,16 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "WISCON — WhatsApp Integrated Services in Construction",
+  title: "WISCON — Construction Compliance, Delivered Through WhatsApp",
   description:
-    "WhatsApp-native tools built for the construction industry. Qualify leads, formalise change orders, and manage punch lists — all on WhatsApp.",
+    "WISCON is the compliance infrastructure for South African construction. Variation orders, lead qualification, defect tracking, formal quoting, H&S reporting, and site diaries — all in WhatsApp, all under one subscription.",
+  other: {
+    "facebook-domain-verification": "u2tj1g1vgx8tv3nqoyl8ssnfyzricj",
+  },
   openGraph: {
-    title: "WISCON — WhatsApp Integrated Services in Construction",
+    title: "WISCON — Construction Compliance, Delivered Through WhatsApp",
     description:
-      "WhatsApp-native tools built for the construction industry. Join the waitlist.",
+      "The compliance infrastructure for SA construction, delivered through WhatsApp. One platform. Six modules. One subscription.",
     url: process.env.NEXT_PUBLIC_SITE_URL,
     siteName: "WISCON",
     locale: "en_ZA",
