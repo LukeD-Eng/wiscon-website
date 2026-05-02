@@ -1,25 +1,36 @@
-const services = [
+type BadgeType = "active" | "soon";
+
+const services: {
+  id: string;
+  name: string;
+  tagline: string;
+  problem: string;
+  solution: string;
+  target: string;
+  badge: BadgeType;
+  icon: string;
+}[] = [
+  {
+    id: "VariProof",
+    name: "VariProof",
+    tagline: "Formalised Variation Orders",
+    problem: "Verbal change orders are the #1 cause of disputes in SA construction.",
+    solution:
+      "GC triggers → homeowner approves via button tap → BSUID captured → tamper-proof PDF with SHA-256 hash delivered to both parties via WhatsApp. ECTA Section 13 compliant.",
+    target: "GCs · Subcontractors · Architects · Engineers",
+    badge: "active",
+    icon: "✅",
+  },
   {
     id: "LeadGate",
     name: "LeadGate",
     tagline: "Automated Lead Qualifier",
     problem: "Tire-kickers waste 10–15 hours of your week.",
     solution:
-      "Click-to-WhatsApp bot qualifies project type, budget, and photos — books site visits for real leads, declines the rest. You only talk to people worth your time.",
+      "Click-to-WhatsApp triggers a rule-based bot that qualifies leads on budget, service type, and photo — books site visits for real leads only.",
     target: "Bakkie builders · Electricians · Plumbers · Solar installers",
-    price: "R450/month",
+    badge: "soon",
     icon: "🔗",
-  },
-  {
-    id: "VariProof",
-    name: "VariProof",
-    tagline: "WhatsApp Variation Orders",
-    problem: "Verbal change orders are the #1 cause of disputes in SA construction.",
-    solution:
-      "Send a /change command → both parties get Approve/Decline buttons on WhatsApp → ECTA-compliant digital record + PDF audit trail generated automatically.",
-    target: "GCs · Subcontractors · Architects · Engineers",
-    price: "R9 per variation order",
-    icon: "✅",
   },
   {
     id: "SnagTrack",
@@ -27,21 +38,43 @@ const services = [
     tagline: "WhatsApp Defect Tracking",
     problem: "Defect instructions buried in noisy group chats — no audit trail, no accountability.",
     solution:
-      "Supervisor sends a photo → defect routed to responsible sub via WhatsApp → completion photo received → supervisor approves → timestamped audit trail. No app to download.",
+      "Supervisor sends a photo → defect routed to responsible sub → completion photo collected → supervisor approves → full timestamped audit trail. No app download.",
     target: "Principal contractors · Site supervisors · Subcontractors",
-    price: "From R1,500/project",
+    badge: "soon",
     icon: "📋",
   },
   {
-    id: "SiteInstruct",
-    name: "SiteInstruct",
-    tagline: "Digital Site Instruction Book",
-    problem: "Physical site instruction books get lost, disputed, and can't be searched.",
+    id: "QuoteFlow",
+    name: "QuoteFlow",
+    tagline: "Formal WhatsApp Quoting",
+    problem: "Informal voice note quotes cause scope disputes before work even starts.",
     solution:
-      "Formalise a site instruction from a WhatsApp conversation in 60 seconds → contractor taps to sign → immutable, timestamped record stored and retrievable by both parties.",
-    target: "Architects · Engineers · Principal agents · Contractors",
-    price: "Coming Soon",
-    icon: "📄",
+      "Contractor enters scope and price → formal quote sent to client → client accepts via button tap → ECTA-compliant PDF record delivered to both parties.",
+    target: "Bakkie builders · Small GCs · Electricians · Plumbers",
+    badge: "soon",
+    icon: "📝",
+  },
+  {
+    id: "SafeGuard",
+    name: "SafeGuard",
+    tagline: "OHSA H&S Incident Reporting",
+    problem: "Almost no small SA contractor complies with OHSA incident reporting — it's done on paper or not at all.",
+    solution:
+      "Log incidents, near-misses, and toolbox talks via WhatsApp buttons → PDF incident report generated → stored and sent to all relevant parties.",
+    target: "H&S officers · Principal contractors · Site supervisors",
+    badge: "soon",
+    icon: "🦺",
+  },
+  {
+    id: "SiteDiary",
+    name: "Site Diary",
+    tagline: "Daily Site Log Bot",
+    problem: "No daily site diary = no evidence base for JBCC Extension of Time claims.",
+    solution:
+      "Log daily workers, work completed, weather, and delays via WhatsApp → weekly PDF client report auto-generated.",
+    target: "Small GCs · Site managers · Principal agents",
+    badge: "soon",
+    icon: "📅",
   },
 ];
 
@@ -54,14 +87,14 @@ export default function Services() {
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ color: "var(--color-black)" }}
           >
-            Four tools. One familiar interface.
+            One platform. Six modules.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Each WISCON service solves a specific, costly problem in construction — delivered entirely through WhatsApp.
+            Subscribe to WISCON once and get every module — variation orders, lead qualification, defect tracking, formal quoting, H&S reporting, and site diaries. All in WhatsApp. All under one subscription.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
             <div
               key={s.id}
@@ -70,12 +103,21 @@ export default function Services() {
             >
               <div className="text-3xl mb-5">{s.icon}</div>
               <div className="mb-1">
-                <span
-                  className="inline-block text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3"
-                  style={{ backgroundColor: "#D1FAE5", color: "var(--color-green)" }}
-                >
-                  Coming Soon
-                </span>
+                {s.badge === "active" ? (
+                  <span
+                    className="inline-block text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3"
+                    style={{ backgroundColor: "#D1FAE5", color: "var(--color-green)" }}
+                  >
+                    Now in development — join the waitlist
+                  </span>
+                ) : (
+                  <span
+                    className="inline-block text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3"
+                    style={{ backgroundColor: "#F3F4F6", color: "#6B7280" }}
+                  >
+                    Coming soon
+                  </span>
+                )}
               </div>
               <h3
                 className="text-xl font-bold mb-1"
@@ -87,8 +129,7 @@ export default function Services() {
               <p className="text-sm text-gray-500 italic mb-3">&ldquo;{s.problem}&rdquo;</p>
               <p className="text-gray-700 text-sm leading-relaxed mb-6 flex-1">{s.solution}</p>
               <div className="border-t border-gray-200 pt-5 mt-auto">
-                <p className="text-xs text-gray-500 mb-1">{s.target}</p>
-                <p className="text-sm font-semibold" style={{ color: "var(--color-green)" }}>{s.price}</p>
+                <p className="text-xs text-gray-500">{s.target}</p>
               </div>
             </div>
           ))}

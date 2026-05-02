@@ -7,16 +7,16 @@ export default function Hero() {
             className="text-sm font-semibold uppercase tracking-widest mb-5"
             style={{ color: "var(--color-green)" }}
           >
-            WhatsApp-native construction tools
+            The compliance infrastructure for SA construction
           </p>
           <h1
             className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
             style={{ color: "var(--color-black)" }}
           >
-            Run your construction business on the app your team already uses.
+            Every instruction confirmed. Every change order signed. No new app.
           </h1>
           <p className="text-lg sm:text-xl leading-relaxed mb-10 text-gray-600">
-            WISCON brings lead qualification, variation orders, defect tracking, and site instructions into WhatsApp — no new app, no training, no friction.
+            WISCON is the compliance infrastructure for South African construction, delivered entirely through WhatsApp. One number. Six modules. One subscription.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
@@ -31,7 +31,7 @@ export default function Hero() {
               className="inline-flex items-center justify-center h-13 px-8 rounded-full text-base font-semibold border transition-colors hover:bg-gray-50"
               style={{ borderColor: "#D1D5DB", color: "var(--color-black)", height: "52px" }}
             >
-              See the services
+              See the platform
             </a>
           </div>
         </div>

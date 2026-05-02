@@ -4,8 +4,17 @@ import { useState, FormEvent } from "react";
 
 type FormState = "idle" | "loading" | "success" | "duplicate" | "error";
 
-const services = ["LeadGate", "VariProof", "SnagTrack", "SiteInstruct"] as const;
+const services = ["VariProof", "LeadGate", "SnagTrack", "QuoteFlow", "SafeGuard", "SiteDiary"] as const;
 type Service = (typeof services)[number];
+
+const serviceLabels: Record<Service, string> = {
+  VariProof: "VariProof — Variation Orders",
+  LeadGate: "LeadGate — Lead Qualification",
+  SnagTrack: "SnagTrack — Defect Tracking",
+  QuoteFlow: "QuoteFlow — Formal Quoting",
+  SafeGuard: "SafeGuard — H&S Reporting",
+  SiteDiary: "Site Diary — Daily Site Log",
+};
 
 export default function WaitlistForm() {
   const [name, setName] = useState("");
@@ -106,10 +115,10 @@ export default function WaitlistForm() {
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ color: "var(--color-black)" }}
           >
-            Get early access.
+            Join the WISCON waitlist.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            WISCON is launching soon. Join the waitlist and be first to know — we&apos;ll reach out before we go public.
+            Get early access to every module as it launches. Early adopters lock in R999/project/month — this rate increases when we exit beta.
           </p>
         </div>
 
@@ -173,7 +182,7 @@ export default function WaitlistForm() {
           {/* Services */}
           <div>
             <p className="block text-sm font-medium mb-3" style={{ color: "var(--color-black)" }}>
-              Which services interest you? <span style={{ color: "var(--color-green)" }}>*</span>
+              Which modules interest you? <span style={{ color: "var(--color-green)" }}>*</span>
             </p>
             <div className="space-y-3">
               {services.map((s) => (
@@ -200,7 +209,7 @@ export default function WaitlistForm() {
                     checked={selected.includes(s)}
                     onChange={() => toggleService(s)}
                   />
-                  <span className="text-sm" style={{ color: "var(--color-black)" }}>{s}</span>
+                  <span className="text-sm" style={{ color: "var(--color-black)" }}>{serviceLabels[s]}</span>
                 </label>
               ))}
             </div>

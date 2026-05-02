@@ -112,6 +112,29 @@ export default function VariProofPage() {
           </div>
         </section>
 
+        {/* V2 platform callout */}
+        <section
+          className="px-5 sm:px-8 py-8"
+          style={{ backgroundColor: "#D1FAE5" }}
+        >
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-2xl flex gap-4 items-start">
+              <span className="text-2xl shrink-0">🧩</span>
+              <div>
+                <p className="text-sm font-bold mb-1" style={{ color: "var(--color-green)" }}>
+                  VariProof is Module 1 of the WISCON Platform
+                </p>
+                <p className="text-sm leading-relaxed" style={{ color: "#065F46" }}>
+                  WISCON Pro gives you VariProof plus five more modules — lead qualification, defect tracking, formal quoting, H&S reporting, and site diaries — all through WhatsApp, all under one subscription at R999/project/month. Subscribers get every module as it launches.{" "}
+                  <a href="https://wiscon.co.za#waitlist" style={{ color: "var(--color-green)", fontWeight: 600 }}>
+                    Join the waitlist →
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Who this is for */}
         <section
           className="px-5 sm:px-8 py-16 sm:py-20"

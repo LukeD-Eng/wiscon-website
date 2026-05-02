@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     if (!Array.isArray(services) || services.length === 0) {
       return NextResponse.json({ error: "At least one service must be selected." }, { status: 400 });
     }
-    const validServices = ["LeadGate", "VariProof", "SnagTrack", "SiteInstruct"];
+    const validServices = ["VariProof", "LeadGate", "SnagTrack", "QuoteFlow", "SafeGuard", "SiteDiary"];
     if (!services.every((s: string) => validServices.includes(s))) {
       return NextResponse.json({ error: "Invalid service selected." }, { status: 400 });
     }

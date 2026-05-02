@@ -17,8 +17,9 @@ export default function Header() {
 
         {/* Nav links — desktop */}
         <nav className="hidden sm:flex items-center gap-8 text-sm font-medium" style={{ color: "var(--color-black)" }}>
-          <a href="#services" className="hover:opacity-60 transition-opacity">Services</a>
+          <a href="#services" className="hover:opacity-60 transition-opacity">Platform</a>
           <a href="#why-whatsapp" className="hover:opacity-60 transition-opacity">Why WhatsApp</a>
+          <a href="#waitlist" className="hover:opacity-60 transition-opacity">Waitlist</a>
         </nav>
 
         {/* CTA */}
@@ -46,7 +47,7 @@ export default function Header() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="sm:hidden border-t border-gray-100 px-5 py-4 flex flex-col gap-4 bg-white">
-          <a href="#services" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="#services" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Platform</a>
           <a href="#why-whatsapp" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Why WhatsApp</a>
           <a
             href="#waitlist"
