@@ -1,4 +1,7 @@
 export default function Footer() {
+  const legalDetails =
+    "WISCON (PTY) LTD | Reg No: 2026/334498/07 | 7 Grenache Close, Zevenzicht Estate, Cape Town, Western Cape, 7580";
+
   return (
     <footer
       className="px-5 sm:px-8 py-12 border-t border-gray-100"
@@ -10,6 +13,7 @@ export default function Footer() {
             WIS<span style={{ color: "var(--color-green)" }}>C</span>ON
           </p>
           <p className="text-sm text-gray-500">WhatsApp Integrated Services in Construction</p>
+          <p className="text-xs text-gray-400 mt-2 max-w-xl">{legalDetails}</p>
         </div>
         <div className="flex flex-col sm:items-end gap-1.5">
           <a

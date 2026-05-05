@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free WhatsApp Compliance Assessment — WISCON</title>
+  <meta name="description" content="Five questions. Two minutes on WhatsApp. Get a personalised score showing exactly where your business is losing money — and 8 free templates that fix it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Netlify Forms hidden trigger -->
+  <form name="wiscon-assessment" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="tel" name="phone" />
+    <input type="email" name="email" />
+    <input type="text" name="service_type" />
+  </form>
+
+  <style>
+    :root {
+      --green:      #1B6B3A;
+      --green-dark: #145230;
+      --black:      #1C1C1C;
+      --white:      #FFFFFF;
+      --off-white:  #F5F5F5;
+      --gray-mid:   #6B7280;
+      --gray-light: #E5E7EB;
+      --font:       'Inter', system-ui, sans-serif;
+      --pill:       999px;
+      --card:       12px;
+      --max-w:      680px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+    /* HEADER */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--gray-light);
+      background: var(--white);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.03em; color: var(--black); }
+    .logo span { color: var(--green); }
+    .header-cta {
+      display: inline-flex; align-items: center; height: 40px; padding: 0 20px;
+      border-radius: var(--pill); background: var(--green); color: var(--white);
+      font-size: 0.875rem; font-weight: 600; transition: background 0.15s;
+    }
+    .header-cta:hover { background: var(--green-dark); }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      height: 56px; padding: 0 32px; border-radius: var(--pill);
+      background: var(--green); color: var(--white); font-size: 1rem; font-weight: 700;
+      border: none; cursor: pointer; transition: background 0.15s, transform 0.1s;
+      animation: pulse-cta 2.5s ease-in-out infinite;
+      width: 100%; max-width: 400px; text-align: center;
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); animation: none; }
+    @keyframes pulse-cta {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(27,107,58,0); }
+      50%       { box-shadow: 0 0 0 8px rgba(27,107,58,0.18); }
+    }
+
+    /* HERO */
+    .hero { padding: 64px 0 56px; background: var(--white); }
+    .eyebrow {
+      display: inline-block; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 2.75rem); font-weight: 800;
+      line-height: 1.1; letter-spacing: -0.03em; color: var(--black); margin-bottom: 20px;
+    }
+    .hero-sub { font-size: 1.125rem; line-height: 1.65; color: var(--gray-mid); margin-bottom: 36px; }
+    .hero-sub strong { color: var(--black); font-weight: 600; }
+    .hero-trust {
+      margin-top: 16px; font-size: 0.8125rem; color: var(--gray-mid);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .hero-trust::before {
+      content: ''; display: inline-block; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--green); flex-shrink: 0;
+    }
+
+    /* HOOK */
+    .hook-section { padding: 56px 0; background: var(--off-white); }
+    .hook-text {
+      font-size: 1.25rem; font-weight: 500; line-height: 1.6; color: var(--black);
+      border-left: 3px solid var(--green); padding-left: 20px;
+    }
+
+    /* BODY */
+    .body-section { padding: 56px 0; background: var(--white); }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 12px;
+    }
+    .body-section h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 20px;
+    }
+    .body-section p { color: var(--gray-mid); line-height: 1.75; margin-bottom: 16px; }
+    .body-section p strong { color: var(--black); font-weight: 600; }
+
+    /* COVERS */
+    .covers-section { padding: 56px 0; background: var(--off-white); }
+    .covers-section h2 {
+      font-size: clamp(1.375rem, 4vw, 1.75rem); font-weight: 800;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .covers-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .covers-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--white); border-radius: var(--card); padding: 16px 18px;
+      font-size: 0.9375rem; font-weight: 500; color: var(--black);
+    }
+    .num {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: var(--green); color: var(--white); font-size: 0.75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+
+    /* BENEFITS */
+    .benefits-section { padding: 56px 0; background: var(--white); }
+    .benefits-section h2 {
+      font-size: clamp(1.375rem, 4vw, 1.75rem); font-weight: 800;
+      letter-spacing: -0.025em; margin-bottom: 28px;
+    }
+    .benefits-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .benefits-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 0.9375rem; line-height: 1.65; }
+    .check {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--green); color: var(--white);
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .check svg { width: 12px; height: 12px; }
+
+    /* WHO */
+    .who-section { padding: 56px 0; background: var(--off-white); }
+    .who-section h2 { font-size: clamp(1.375rem, 4vw, 1.75rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 20px; }
+    .who-section p { font-size: 1rem; line-height: 1.75; color: var(--gray-mid); }
+    .who-section p strong { color: var(--black); font-weight: 600; }
+    .trades-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .trade-tag {
+      padding: 6px 14px; border-radius: var(--pill); background: var(--white);
+      border: 1.5px solid var(--gray-light); font-size: 0.8125rem; font-weight: 600;
+    }
+
+    /* WHAT YOU GET */
+    .get-section { padding: 56px 0; background: var(--white); }
+    .get-section h2 { font-size: clamp(1.375rem, 4vw, 1.75rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 28px; }
+    .get-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .get-card { background: var(--off-white); border-radius: var(--card); padding: 20px; }
+    .get-card .card-title {
+      font-size: 0.875rem; font-weight: 700; color: var(--green);
+      margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .get-card p { font-size: 0.9375rem; line-height: 1.6; }
+
+    /* FORM SECTION */
+    .form-section { padding: 64px 0 80px; background: var(--black); }
+    .form-section .eyebrow { color: rgba(255,255,255,0.5); }
+    .form-section h2 {
+      font-size: clamp(1.75rem, 5vw, 2.25rem); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.15; color: var(--white); margin-bottom: 12px;
+    }
+    .form-section .sub { font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 36px; line-height: 1.65; }
+    .form-section .sub strong { color: var(--white); }
+
+    form.capture { display: flex; flex-direction: column; gap: 14px; }
+    .field-label {
+      display: block; font-size: 0.8125rem; font-weight: 600;
+      color: rgba(255,255,255,0.7); margin-bottom: 6px; letter-spacing: 0.02em;
+    }
+    .field-label .req { color: var(--green); margin-left: 2px; }
+    .form-input {
+      width: 100%; height: 52px; padding: 0 16px; border-radius: 10px;
+      background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.15);
+      color: var(--white); font-size: 1rem; font-family: var(--font);
+      transition: border-color 0.15s, background 0.15s; outline: none;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.3); }
+    .form-input:focus { border-color: var(--green); background: rgba(255,255,255,0.12); }
+
+    .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+    .checkbox-item { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+    .checkbox-item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; }
+    .checkbox-item span { font-size: 0.9375rem; color: rgba(255,255,255,0.8); }
+
+    .btn-submit {
+      display: flex; align-items: center; justify-content: center;
+      height: 60px; border-radius: var(--pill); background: var(--green);
+      color: var(--white); font-size: 1.0625rem; font-weight: 700;
+      border: none; cursor: pointer; transition: background 0.15s, transform 0.1s;
+      width: 100%; margin-top: 8px; animation: pulse-cta 2.5s ease-in-out infinite;
+      letter-spacing: -0.01em;
+    }
+    .btn-submit:hover { background: var(--green-dark); transform: translateY(-1px); animation: none; }
+
+    .form-trust { font-size: 0.8125rem; color: rgba(255,255,255,0.4); text-align: center; margin-top: 4px; }
+    .form-trust strong { color: rgba(255,255,255,0.6); }
+
+    /* SUCCESS STATE */
+    .form-success { display: none; text-align: center; padding: 40px 0; }
+    .form-success .tick {
+      width: 64px; height: 64px; border-radius: 50%; background: var(--green);
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+    }
+    .form-success .tick svg { width: 32px; height: 32px; }
+    .form-success h3 { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .form-success p { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.65; margin-bottom: 28px; }
+    .form-success p strong { color: var(--white); }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      height: 60px; padding: 0 32px; border-radius: var(--pill);
+      background: #25D366; color: var(--white); font-size: 1.0625rem; font-weight: 700;
+      animation: pulse-cta 2.5s ease-in-out infinite; width: 100%;
+    }
+    .btn-whatsapp:hover { background: #1ebe5a; animation: none; }
+    .btn-whatsapp svg { width: 24px; height: 24px; flex-shrink: 0; }
+
+    /* FOOTER */
+    footer { padding: 28px 0; background: var(--off-white); border-top: 1px solid var(--gray-light); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .footer-logo { font-size: 1rem; font-weight: 800; letter-spacing: -0.03em; }
+    .footer-logo span { color: var(--green); }
+    .footer-copy { font-size: 0.8125rem; color: var(--gray-mid); }
+    .footer-legal { flex-basis: 100%; font-size: 0.75rem; color: var(--gray-mid); }
+
+    /* STICKY CTA (mobile) */
+    .sticky-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--white); border-top: 1px solid var(--gray-light);
+      padding: 12px 16px; z-index: 200; box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    }
+    .sticky-cta a {
+      display: flex; align-items: center; justify-content: center;
+      height: 52px; border-radius: var(--pill); background: var(--green);
+      color: var(--white); font-size: 1rem; font-weight: 700; width: 100%;
+      animation: pulse-cta 2.5s ease-in-out infinite;
+    }
+    @media (max-width: 640px) {
+      .sticky-cta { display: block; }
+      body { padding-bottom: 80px; }
+      .header-cta { display: none; }
+    }
+
+    .divider { height: 1px; background: var(--gray-light); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">WIS<span>C</span>ON</div>
+        <a href="#form" class="header-cta">Show me what it's costing me →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Free WhatsApp Assessment</p>
+      <h1>How much are your verbal agreements costing you?</h1>
+      <p class="hero-sub">
+        <strong>Five questions. Two minutes on WhatsApp.</strong> You get a personalised score showing exactly where your business is losing money — and 8 free templates that fix it. No app. No sign-up fees. Just WhatsApp.
+      </p>
+      <a href="#form" class="btn-primary">Show me what it's costing me →</a>
+      <p class="hero-trust">Built for South African contractors. No sign-up fees. No catch.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HOOK -->
+  <section class="hook-section">
+    <div class="container">
+      <p class="hook-text">If a client has ever disputed work you know they approved, the problem was never the client — it was the missing written record.</p>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="body-section">
+    <div class="container">
+      <p class="section-label">The real problem</p>
+      <h2>Most SA contractors are losing money not because of bad work.</h2>
+      <p>A verbal change order. A quote accepted on a voice note. A defect instruction buried in a group chat. A missed payment with nothing in writing.</p>
+      <p><strong>When it goes wrong, there is no written record. Just your word against theirs.</strong></p>
+      <p>This assessment takes two minutes. You answer five questions about how you actually run your jobs. You get a personalised score that shows exactly where your business is losing money — and 8 copy-paste WhatsApp templates that fix it today, with no new app and no paperwork.</p>
+      <br/>
+      <a href="#form" class="btn-primary" style="display:inline-flex;">Show me what it's costing me →</a>
+    </div>
+  </section>
+
+  <!-- WHAT IT COVERS -->
+  <section class="covers-section">
+    <div class="container">
+      <p class="section-label">What the assessment covers</p>
+      <h2>Five moments where SA contractors lose money every month.</h2>
+      <ul class="covers-list">
+        <li><span class="num">1</span><span><strong>Change order approvals</strong> — confirmed before your team lifts a finger</span></li>
+        <li><span class="num">2</span><span><strong>Payment milestones</strong> — written terms you can actually enforce</span></li>
+        <li><span class="num">3</span><span><strong>Defect instructions</strong> — issued in writing, signed off in writing</span></li>
+        <li><span class="num">4</span><span><strong>Quote acceptance</strong> — written confirmation before you mobilise</span></li>
+        <li><span class="num">5</span><span><strong>Site records</strong> — daily log that protects you when disputes happen</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits-section">
+    <div class="container">
+      <p class="section-label">What changes</p>
+      <h2>When every agreement is in writing.</h2>
+      <ul class="benefits-list">
+        <li>
+          <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Get every variation confirmed before your team lifts a finger, so that your invoice reflects what was agreed — not what the client remembers agreeing to.</span>
+        </li>
+        <li>
+          <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Filter out tyre-kickers at the first message, so that your time goes to clients who are ready to build — not people who are just getting quotes.</span>
+        </li>
+        <li>
+          <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Get written sign-off when a snag is fixed, so that "I sorted it" never becomes an argument about whether it actually was.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="who-section">
+    <div class="container">
+      <p class="section-label">Who this is for</p>
+      <h2>If you run your business off your phone, this is for you.</h2>
+      <p>You are a contractor running <strong>1–10 active projects</strong>. You already use WhatsApp to communicate with clients and subs. This assessment runs on WhatsApp — you will not need to download anything or open a browser.</p>
+      <div class="trades-list">
+        <span class="trade-tag">General Contractor</span>
+        <span class="trade-tag">Electrician</span>
+        <span class="trade-tag">Plumber</span>
+        <span class="trade-tag">Solar Installer</span>
+        <span class="trade-tag">Bathroom Reno</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="get-section">
+    <div class="container">
+      <p class="section-label">What you get</p>
+      <h2>A personalised score. Eight templates. Delivered to your phone.</h2>
+      <div class="get-grid">
+        <div class="get-card">
+          <p class="card-title">Your score</p>
+          <p>A personalised result based on your answers, delivered immediately. Shows exactly where your business is exposed — and what it's costing you.</p>
+        </div>
+        <div class="get-card">
+          <p class="card-title">8 Copy-Paste Templates</p>
+          <p>Change Order Confirmation. Payment Milestone Request. Quote Acceptance Record. Defect Instruction Form. And four more — sent straight to your WhatsApp.</p>
+        </div>
+        <div class="get-card">
+          <p class="card-title">No catch</p>
+          <p>Free. No app to download. No new accounts. The assessment runs on the WhatsApp you already have on your phone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-section" id="form">
+    <div class="container">
+      <p class="eyebrow">Free — No Catch</p>
+      <h2>Show me what it's costing me.</h2>
+      <p class="sub">Enter your details below. We'll send you straight to the WhatsApp assessment. <strong>Takes two minutes.</strong></p>
+
+      <div id="form-wrapper">
+        <form
+          class="capture"
+          name="wiscon-assessment"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          onsubmit="handleSubmit(event)"
+        >
+          <input type="hidden" name="form-name" value="wiscon-assessment" />
+          <p style="display:none"><input name="bot-field" /></p>
+
+          <div>
+            <label class="field-label" for="name">Your name <span class="req">*</span></label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="e.g. Thabo Nkosi" required autocomplete="name" />
+          </div>
+          <div>
+            <label class="field-label" for="phone">WhatsApp number <span class="req">*</span></label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="e.g. 082 555 1234" required autocomplete="tel" inputmode="tel" />
+          </div>
+          <div>
+            <label class="field-label" for="email">Email address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="e.g. you@yourcompany.co.za" autocomplete="email" inputmode="email" />
+          </div>
+          <div>
+            <label class="field-label">What best describes you?</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="service_type" value="General Contractor (GC)" /><span>General Contractor (GC)</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="service_type" value="Electrician" /><span>Electrician</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="service_type" value="Plumber" /><span>Plumber</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="service_type" value="Solar Installer" /><span>Solar Installer</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="service_type" value="Subcontractor" /><span>Subcontractor</span></label>
+              <label class="checkbox-item"><input type="checkbox" name="service_type" value="Other" /><span>Other</span></label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">Show me what it's costing me →</button>
+          <p class="form-trust"><strong>Built for South African contractors.</strong> No sign-up fees. No catch.</p>
+        </form>
+      </div>
+
+      <!-- SUCCESS — WhatsApp CTA fires here -->
+      <div class="form-success" id="form-success">
+        <div class="tick">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M6 16l7 7 13-13" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>You're in. One tap to start.</h3>
+        <p>Your details are saved. Now open WhatsApp and start the two-minute assessment — your personalised score and <strong>8 free templates</strong> are waiting on the other side.</p>
+        <a
+          class="btn-whatsapp"
+          href="https://wa.me/15556323678?text=Hi%2C+I%27m+ready+to+take+the+free+WISCON+compliance+assessment"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <!-- WhatsApp icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Start my free assessment
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">WIS<span>C</span>ON</div>
+        <p class="footer-copy">WhatsApp Integrated Services in Construction · wiscon.co.za</p>
+        <p class="footer-legal">WISCON (PTY) LTD | Reg No: 2026/334498/07 | 7 Grenache Close, Zevenzicht Estate, Cape Town, Western Cape, 7580</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY CTA (mobile only) -->
+  <div class="sticky-cta" id="sticky-cta">
+    <a href="#form">Show me what it's costing me →</a>
+  </div>
+
+  <script>
+    // Hide sticky bar when form section is visible
+    const formSection = document.getElementById('form');
+    const stickyCta   = document.getElementById('sticky-cta');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { stickyCta.style.display = e.isIntersecting ? 'none' : ''; });
+    }, { threshold: 0.1 });
+    observer.observe(formSection);
+
+    // Form submit — post to Netlify, then show WhatsApp CTA
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString(),
+      })
+      .then(() => showSuccess())
+      .catch(() => showSuccess()); // show success regardless — Netlify handles server-side
+    }
+
+    function showSuccess() {
+      document.getElementById('form-wrapper').style.display = 'none';
+      document.getElementById('sticky-cta').style.display   = 'none';
+      document.getElementById('form-success').style.display  = 'block';
+    }
+  </script>
+
+</body>
+</html>
