@@ -13,10 +13,10 @@ const services: {
   {
     id: "VariProof",
     name: "VariProof",
-    tagline: "Formalised Variation Orders",
-    problem: "Verbal change orders are the #1 cause of disputes in SA construction.",
+    tagline: "Variation Approval Workflow",
+    problem: "Verbal change orders get remembered differently when the invoice arrives.",
     solution:
-      "GC triggers → homeowner approves via button tap → BSUID captured → tamper-proof PDF with SHA-256 hash delivered to both parties via WhatsApp. ECTA Section 13 compliant.",
+      "Capture a variation in WhatsApp, get client approval, and save a timestamped record with the evidence attached.",
     target: "GCs · Subcontractors · Architects · Engineers",
     badge: "active",
     icon: "✅",
@@ -24,10 +24,10 @@ const services: {
   {
     id: "LeadGate",
     name: "LeadGate",
-    tagline: "Automated Lead Qualifier",
-    problem: "Tire-kickers waste 10–15 hours of your week.",
+    tagline: "Structured Lead Intake",
+    problem: "New enquiries arrive in WhatsApp with missing details and no clear next step.",
     solution:
-      "Click-to-WhatsApp triggers a rule-based bot that qualifies leads on budget, service type, and photo — books site visits for real leads only.",
+      "Turn inbound WhatsApp enquiries into structured lead records with budget, scope, photos, and follow-up status.",
     target: "Bakkie builders · Electricians · Plumbers · Solar installers",
     badge: "soon",
     icon: "🔗",
@@ -35,10 +35,10 @@ const services: {
   {
     id: "SnagTrack",
     name: "SnagTrack",
-    tagline: "WhatsApp Defect Tracking",
-    problem: "Defect instructions buried in noisy group chats — no audit trail, no accountability.",
+    tagline: "Defect Responsibility Workflow",
+    problem: "Snag photos get shared, but responsibility and completion proof get lost.",
     solution:
-      "Supervisor sends a photo → defect routed to responsible sub → completion photo collected → supervisor approves → full timestamped audit trail. No app download.",
+      "Capture the defect photo, assign responsibility, collect completion proof, and keep the sign-off trail in one place.",
     target: "Principal contractors · Site supervisors · Subcontractors",
     badge: "soon",
     icon: "📋",
@@ -46,10 +46,10 @@ const services: {
   {
     id: "QuoteFlow",
     name: "QuoteFlow",
-    tagline: "Formal WhatsApp Quoting",
-    problem: "Informal voice note quotes cause scope disputes before work even starts.",
+    tagline: "Quote Acceptance Record",
+    problem: "Informal voice note quotes create scope confusion before work even starts.",
     solution:
-      "Contractor enters scope and price → formal quote sent to client → client accepts via button tap → ECTA-compliant PDF record delivered to both parties.",
+      "Send a clear quote through WhatsApp, capture acceptance, and keep a formal record of the agreed scope and price.",
     target: "Bakkie builders · Small GCs · Electricians · Plumbers",
     badge: "soon",
     icon: "📝",
@@ -57,10 +57,10 @@ const services: {
   {
     id: "SafeGuard",
     name: "SafeGuard",
-    tagline: "OHSA H&S Incident Reporting",
-    problem: "Almost no small SA contractor complies with OHSA incident reporting — it's done on paper or not at all.",
+    tagline: "Site Incident Records",
+    problem: "Incidents, near-misses, and toolbox talks are still handled on paper or not captured at all.",
     solution:
-      "Log incidents, near-misses, and toolbox talks via WhatsApp buttons → PDF incident report generated → stored and sent to all relevant parties.",
+      "Log incidents, near-misses, and toolbox talks from site, then store the record where the team can find it.",
     target: "H&S officers · Principal contractors · Site supervisors",
     badge: "soon",
     icon: "🦺",
@@ -68,10 +68,10 @@ const services: {
   {
     id: "SiteDiary",
     name: "Site Diary",
-    tagline: "Daily Site Log Bot",
-    problem: "No daily site diary = no evidence base for JBCC Extension of Time claims.",
+    tagline: "Daily Site Memory",
+    problem: "Daily site updates vanish into chat, leaving no clean evidence base for delays or claims.",
     solution:
-      "Log daily workers, work completed, weather, and delays via WhatsApp → weekly PDF client report auto-generated.",
+      "Capture workers, work completed, weather, delays, and photos from WhatsApp, then turn them into a weekly site record.",
     target: "Small GCs · Site managers · Principal agents",
     badge: "soon",
     icon: "📅",
@@ -87,10 +87,10 @@ export default function Services() {
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ color: "var(--color-black)" }}
           >
-            One platform. Six modules.
+            The workflow layer for construction communication.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Subscribe to WISCON once and get every module — variation orders, lead qualification, defect tracking, formal quoting, H&S reporting, and site diaries. All in WhatsApp. All under one subscription.
+            WISCON structures the messages your team already sends: variations, defects, quotes, incidents, lead enquiries, and daily site records. No new app. No new behaviour. Just a clearer record of who said what, when, and with what evidence.
           </p>
         </div>
 

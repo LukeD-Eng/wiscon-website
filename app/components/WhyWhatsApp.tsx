@@ -11,9 +11,9 @@ const reasons = [
       "93.9% of South African smartphone users are on WhatsApp. Your crew, your subs, your clients — they're all there. WISCON meets them where they already are.",
   },
   {
-    heading: "No training required",
+    heading: "No behaviour change",
     body:
-      "New software means training, resistance, and abandonment. WhatsApp requires none of that. Adoption is instant because your team already knows how to use it.",
+      "Your team keeps using WhatsApp like normal. WISCON adds the structure construction projects are missing.",
   },
   {
     heading: "Works on any phone",
@@ -43,7 +43,7 @@ export default function WhyWhatsApp() {
             Why WhatsApp? Why South Africa?
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            We didn&apos;t pick WhatsApp because it&apos;s trendy. We picked it because it&apos;s already on every phone on every construction site in the country.
+            Your team does not need another dashboard to remember. They need the communication they already use to become structured, searchable, and accountable.
           </p>
         </div>
 

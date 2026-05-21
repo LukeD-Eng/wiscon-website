@@ -1,18 +1,18 @@
 const problems = [
   {
-    stat: "10–15hrs",
-    label: "wasted per week",
-    description: "Manually qualifying leads that go nowhere.",
+    stat: "Buried",
+    label: "approvals",
+    description: "Instructions and approvals disappear inside fast-moving WhatsApp groups.",
   },
   {
-    stat: "#1",
-    label: "cause of disputes",
-    description: "Verbal change orders no one wrote down.",
+    stat: "Lost",
+    label: "project memory",
+    description: "Photos, RFIs, snags, and site decisions become impossible to find later.",
   },
   {
-    stat: "Days",
-    label: "lost at handover",
-    description: "Chasing photos, punch lists, and sign-offs across WhatsApp groups.",
+    stat: "No",
+    label: "audit trail",
+    description: "When a dispute starts, nobody has the full record of who said what and when.",
   },
 ];
 
@@ -28,7 +28,7 @@ export default function ProblemStatement() {
             Construction runs on WhatsApp. The tools don&apos;t.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Your team already communicates on WhatsApp — but every time something needs to be tracked, approved, or documented, you switch to a system no one uses. That gap costs you money and creates disputes.
+            Approvals get buried. Photos disappear. Instructions are forgotten. When a dispute starts, nobody can find the exact message, timestamp, or evidence trail.
           </p>
         </div>
 

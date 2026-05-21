@@ -8,12 +8,12 @@ const services = ["VariProof", "LeadGate", "SnagTrack", "QuoteFlow", "SafeGuard"
 type Service = (typeof services)[number];
 
 const serviceLabels: Record<Service, string> = {
-  VariProof: "VariProof — Variation Orders",
-  LeadGate: "LeadGate — Lead Qualification",
-  SnagTrack: "SnagTrack — Defect Tracking",
-  QuoteFlow: "QuoteFlow — Formal Quoting",
-  SafeGuard: "SafeGuard — H&S Reporting",
-  SiteDiary: "Site Diary — Daily Site Log",
+  VariProof: "VariProof — Variation approvals",
+  LeadGate: "LeadGate — Lead intake",
+  SnagTrack: "SnagTrack — Defect tracking",
+  QuoteFlow: "QuoteFlow — Quote acceptance",
+  SafeGuard: "SafeGuard — Site incident records",
+  SiteDiary: "Site Diary — Daily site memory",
 };
 
 export default function WaitlistForm() {
@@ -40,7 +40,7 @@ export default function WaitlistForm() {
       errs.email = "Please enter a valid email address.";
     }
     if (selected.length === 0)
-      errs.services = "Please select at least one service you're interested in.";
+      errs.services = "Please select at least one workflow you're interested in.";
     return errs;
   }
 
@@ -118,7 +118,7 @@ export default function WaitlistForm() {
             Join the WISCON waitlist.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Get early access to every module as it launches. WISCON plans start at R999/month for teams running up to 5 active projects, with external collaborators included under fair usage.
+            Get early access to WISCON as we roll out structured WhatsApp workflows for South African construction teams. Plans start at R999/month.
           </p>
         </div>
 
@@ -182,7 +182,7 @@ export default function WaitlistForm() {
           {/* Services */}
           <div>
             <p className="block text-sm font-medium mb-3" style={{ color: "var(--color-black)" }}>
-              Which modules interest you? <span style={{ color: "var(--color-green)" }}>*</span>
+              Which workflows do you want structured first? <span style={{ color: "var(--color-green)" }}>*</span>
             </p>
             <div className="space-y-3">
               {services.map((s) => (
