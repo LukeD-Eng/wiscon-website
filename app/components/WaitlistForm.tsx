@@ -118,7 +118,7 @@ export default function WaitlistForm() {
             Join the WISCON waitlist.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Get early access to every module as it launches. Early adopters lock in R999/project/month — this rate increases when we exit beta.
+            Get early access to every module as it launches. WISCON plans start at R999/month for teams running up to 5 active projects, with external collaborators included under fair usage.
           </p>
         </div>
 

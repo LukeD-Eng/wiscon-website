@@ -105,14 +105,14 @@ export default function Services() {
               <div className="mb-1">
                 {s.badge === "active" ? (
                   <span
-                    className="inline-block text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3"
+                    className="inline-block max-w-full text-xs font-semibold uppercase tracking-widest leading-snug px-2.5 py-1 rounded-full mb-3"
                     style={{ backgroundColor: "#D1FAE5", color: "var(--color-green)" }}
                   >
                     Now in development — join the waitlist
                   </span>
                 ) : (
                   <span
-                    className="inline-block text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-3"
+                    className="inline-block max-w-full text-xs font-semibold uppercase tracking-widest leading-snug px-2.5 py-1 rounded-full mb-3"
                     style={{ backgroundColor: "#F3F4F6", color: "#6B7280" }}
                   >
                     Coming soon
