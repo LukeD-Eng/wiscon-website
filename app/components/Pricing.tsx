@@ -1,33 +1,41 @@
 const plans = [
   {
-    name: "Solo Operator",
-    activeProjects: "5",
-    internalUsers: "5",
-    externalCollaborators: "Included",
-    price: "R999",
+    name: "Starter",
+    activeProjects: "3",
+    internalUsers: "Up to 5",
+    bestFor: "Basic capture + records",
+    price: "R1,999",
     cta: "Join the Waitlist",
   },
   {
     name: "Contractor",
-    activeProjects: "15",
-    internalUsers: "30",
-    externalCollaborators: "Included",
-    price: "R2,999",
+    activeProjects: "8",
+    internalUsers: "Unlimited",
+    bestFor: "Full core workflows",
+    price: "R4,999",
     cta: "Join the Waitlist",
   },
   {
     name: "Business",
-    activeProjects: "30",
-    internalUsers: "100",
-    externalCollaborators: "Included",
-    price: "R7,999",
+    activeProjects: "20",
+    internalUsers: "Unlimited",
+    bestFor: "Admin + reporting",
+    price: "R9,999",
+    cta: "Join the Waitlist",
+  },
+  {
+    name: "Scale",
+    activeProjects: "40",
+    internalUsers: "Unlimited",
+    bestFor: "Multi-team operations",
+    price: "R14,999",
     cta: "Join the Waitlist",
   },
   {
     name: "Enterprise",
     activeProjects: "Custom",
     internalUsers: "Custom",
-    externalCollaborators: "Custom",
+    bestFor: "Custom workflows + SLA",
     price: "Contact us",
     cta: "Talk to Us",
   },
@@ -51,11 +59,11 @@ export default function Pricing() {
             Priced by company operating scale.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Choose the plan that fits your active project load and internal team. Clients, subcontractors, suppliers, consultants, architects, and engineers can collaborate without becoming paid seats.
+            Choose the plan that fits your active project load. Contractor and larger plans include unlimited internal users so the whole team can adopt WISCON without seat-count friction.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -88,9 +96,9 @@ export default function Pricing() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-medium text-gray-500">External collaborators</dt>
+                  <dt className="font-medium text-gray-500">Best for</dt>
                   <dd className="mt-1 font-semibold" style={{ color: "var(--color-black)" }}>
-                    {plan.externalCollaborators}
+                    {plan.bestFor}
                   </dd>
                 </div>
               </dl>
@@ -108,10 +116,10 @@ export default function Pricing() {
 
         <div className="mt-8 rounded-lg border border-gray-200 bg-white p-5">
           <p className="text-sm font-semibold mb-2" style={{ color: "var(--color-black)" }}>
-            Flexible scaling options available for growing teams and active projects.
+            Additional active projects from R500/project/month.
           </p>
           <p className="text-sm text-gray-600 leading-relaxed">
-            External collaborators, including clients, subcontractors, suppliers, architects, engineers, and consultants, are included at no additional cost under fair usage.
+            External collaborators, including clients, subcontractors, suppliers, architects, engineers, and consultants, are included at no additional cost. Fair usage applies to WhatsApp messages, media storage, AI usage, PDF records, audit/export packs, and support.
           </p>
         </div>
       </div>
