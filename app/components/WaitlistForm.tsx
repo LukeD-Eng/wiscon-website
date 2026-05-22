@@ -118,7 +118,7 @@ export default function WaitlistForm() {
             Join the WISCON waitlist.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Get early access to WISCON as we roll out structured WhatsApp workflows for South African construction teams. Plans start at R999/month.
+            Get early access to WISCON as we roll out structured WhatsApp workflows for South African construction teams. Plans start at R1,999/month.
           </p>
         </div>
 

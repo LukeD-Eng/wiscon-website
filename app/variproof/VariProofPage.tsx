@@ -125,7 +125,7 @@ export default function VariProofPage() {
                   VariProof is Module 1 of the WISCON Platform
                 </p>
                 <p className="text-sm leading-relaxed" style={{ color: "#065F46" }}>
-                  WISCON Pro gives you VariProof plus five more modules — lead qualification, defect tracking, formal quoting, H&S reporting, and site diaries — all through WhatsApp, all under one company subscription. Plans start at R999/month, with external collaborators included under fair usage.{" "}
+                  WISCON Pro gives you VariProof plus five more modules — lead qualification, defect tracking, formal quoting, H&S reporting, and site diaries — all through WhatsApp, all under one company subscription. Plans start at R1,999/month, with external collaborators included under fair usage.{" "}
                   <a href="https://wiscon.co.za#waitlist" style={{ color: "var(--color-green)", fontWeight: 600 }}>
                     Join the waitlist →
                   </a>
