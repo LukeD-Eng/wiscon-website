@@ -22,6 +22,7 @@ export default function Header() {
           <a href="#why-whatsapp" className="hover:opacity-60 transition-opacity">Why WhatsApp</a>
           <a href="#pricing" className="hover:opacity-60 transition-opacity">Pricing</a>
           <a href="#waitlist" className="hover:opacity-60 transition-opacity">Waitlist</a>
+          <Link href="/dashboard" className="hover:opacity-60 transition-opacity">Dashboard</Link>
         </nav>
 
         {/* CTA */}
@@ -52,6 +53,9 @@ export default function Header() {
           <a href="#services" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Workflows</a>
           <a href="#why-whatsapp" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Why WhatsApp</a>
           <a href="#pricing" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Pricing</a>
+          <Link href="/dashboard" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>
+            Dashboard
+          </Link>
           <a
             href="#waitlist"
             className="inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white"
