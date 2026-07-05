@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} h-full`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${geist.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased">
         {children}
         <Analytics />

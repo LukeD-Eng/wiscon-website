@@ -19,6 +19,8 @@ function fileHref(record: DashboardRecord, field: "pdf" | "media") {
   const mediaField =
     record.record_type === "snagtrack"
       ? "original"
+      : record.record_type === "rfitrack"
+        ? "attachment"
       : record.record_type === "leadgate"
         ? "photo"
         : record.record_type === "site_diary"
@@ -27,7 +29,9 @@ function fileHref(record: DashboardRecord, field: "pdf" | "media") {
             ? "photo"
             : record.record_type === "safeguard_toolbox"
               ? "sheet"
-              : null;
+              : record.record_type === "project_memory"
+                ? "asset"
+                : null;
 
   if (!mediaField) return null;
 

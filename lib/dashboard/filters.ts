@@ -4,10 +4,12 @@ export const MODULE_OPTIONS = [
   { value: "variproof", label: "VariProof" },
   { value: "leadgate", label: "LeadGate" },
   { value: "snagtrack", label: "SnagTrack" },
+  { value: "rfitrack", label: "RFITrack" },
   { value: "quoteflow", label: "QuoteFlow" },
   { value: "safeguard_incident", label: "SafeGuard incidents" },
   { value: "safeguard_toolbox", label: "Toolbox talks" },
   { value: "site_diary", label: "Site Diary" },
+  { value: "project_memory", label: "Project Memory" },
 ] as const;
 
 type SearchParams = Record<string, string | string[] | undefined>;

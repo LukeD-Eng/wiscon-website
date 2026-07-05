@@ -24,6 +24,11 @@ const FILE_FIELDS: Record<string, Record<string, FileField>> = {
   leadgate: {
     photo: { table: "leads", field: "photo_url" },
   },
+  rfitrack: {
+    attachment: { table: "rfis", field: "attachment_url" },
+    audio: { table: "rfis", field: "audio_url" },
+    response: { table: "rfis", field: "response_attachment_url" },
+  },
   safeguard_incident: {
     pdf: { table: "incidents", field: "pdf_url" },
     photo: { table: "incidents", field: "photo_url" },
@@ -34,6 +39,9 @@ const FILE_FIELDS: Record<string, Record<string, FileField>> = {
   },
   site_diary: {
     audio: { table: "diary_entries", field: "audio_url" },
+  },
+  project_memory: {
+    asset: { table: "project_memory_items", field: "primary_asset_url" },
   },
 };
 

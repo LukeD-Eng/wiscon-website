@@ -1,4 +1,6 @@
-type BadgeType = "active" | "soon";
+import Link from "next/link";
+
+type BadgeTone = "open" | "private" | "soon";
 
 const services: {
   id: string;
@@ -7,8 +9,8 @@ const services: {
   problem: string;
   solution: string;
   target: string;
-  badge: BadgeType;
-  icon: string;
+  status: string;
+  badgeTone: BadgeTone;
 }[] = [
   {
     id: "VariProof",
@@ -18,30 +20,8 @@ const services: {
     solution:
       "Capture a variation in WhatsApp, get client approval, and save a timestamped record with the evidence attached.",
     target: "GCs · Subcontractors · Architects · Engineers",
-    badge: "active",
-    icon: "✅",
-  },
-  {
-    id: "LeadGate",
-    name: "LeadGate",
-    tagline: "Structured Lead Intake",
-    problem: "New enquiries arrive in WhatsApp with missing details and no clear next step.",
-    solution:
-      "Turn inbound WhatsApp enquiries into structured lead records with budget, scope, photos, and follow-up status.",
-    target: "Bakkie builders · Electricians · Plumbers · Solar installers",
-    badge: "soon",
-    icon: "🔗",
-  },
-  {
-    id: "SnagTrack",
-    name: "SnagTrack",
-    tagline: "Defect Responsibility Workflow",
-    problem: "Snag photos get shared, but responsibility and completion proof get lost.",
-    solution:
-      "Capture the defect photo, assign responsibility, collect completion proof, and keep the sign-off trail in one place.",
-    target: "Principal contractors · Site supervisors · Subcontractors",
-    badge: "soon",
-    icon: "📋",
+    status: "Pilot open now",
+    badgeTone: "open",
   },
   {
     id: "QuoteFlow",
@@ -51,8 +31,41 @@ const services: {
     solution:
       "Send a clear quote through WhatsApp, capture acceptance, and keep a formal record of the agreed scope and price.",
     target: "Bakkie builders · Small GCs · Electricians · Plumbers",
-    badge: "soon",
-    icon: "📝",
+    status: "Pilot open now",
+    badgeTone: "open",
+  },
+  {
+    id: "SnagTrack",
+    name: "SnagTrack",
+    tagline: "Defect Responsibility Workflow",
+    problem: "Snag photos get shared, but responsibility and completion proof get lost.",
+    solution:
+      "Capture the defect photo, assign responsibility, collect completion proof, and keep the sign-off trail in one place.",
+    target: "Principal contractors · Site supervisors · Subcontractors",
+    status: "Pilot open now",
+    badgeTone: "open",
+  },
+  {
+    id: "LeadGate",
+    name: "LeadGate",
+    tagline: "Structured Lead Intake",
+    problem: "New enquiries arrive in WhatsApp with missing details and no clear next step.",
+    solution:
+      "Turn inbound WhatsApp enquiries into structured lead records with budget, scope, photos, and follow-up status.",
+    target: "Bakkie builders · Electricians · Plumbers · Solar installers",
+    status: "Pilot by request",
+    badgeTone: "private",
+  },
+  {
+    id: "RFITrack",
+    name: "RFITrack",
+    tagline: "Professional Response Workflow",
+    problem: "RFIs get buried in chat, and the final answer is hard to prove later.",
+    solution:
+      "Raise an RFI from WhatsApp, assign it to the right professional, capture the answer, and close or reopen the record.",
+    target: "GCs · Engineers · Architects · QSs · Principal agents",
+    status: "Private pilot",
+    badgeTone: "private",
   },
   {
     id: "SafeGuard",
@@ -62,8 +75,8 @@ const services: {
     solution:
       "Log incidents, near-misses, and toolbox talks from site, then store the record where the team can find it.",
     target: "H&S officers · Principal contractors · Site supervisors",
-    badge: "soon",
-    icon: "🦺",
+    status: "Coming soon - H&S review",
+    badgeTone: "soon",
   },
   {
     id: "SiteDiary",
@@ -73,10 +86,16 @@ const services: {
     solution:
       "Capture workers, work completed, weather, delays, and photos from WhatsApp, then turn them into a weekly site record.",
     target: "Small GCs · Site managers · Principal agents",
-    badge: "soon",
-    icon: "📅",
+    status: "Coming soon - QS review",
+    badgeTone: "soon",
   },
 ];
+
+const badgeStyles: Record<BadgeTone, { backgroundColor: string; color: string }> = {
+  open: { backgroundColor: "#D1FAE5", color: "var(--color-green)" },
+  private: { backgroundColor: "#E0F2FE", color: "#075985" },
+  soon: { backgroundColor: "#FEF3C7", color: "#92400E" },
+};
 
 export default function Services() {
   return (
@@ -87,10 +106,10 @@ export default function Services() {
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ color: "var(--color-black)" }}
           >
-            The workflow layer for construction communication.
+            The WISCON workflow suite.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            WISCON structures the messages your team already sends: variations, defects, quotes, incidents, lead enquiries, and daily site records. No new app. No new behaviour. Just a clearer record of who said what, when, and with what evidence.
+            The first workflows are open for founder-led pilots. Specialist workflows are private by request, and compliance-heavy records are being held for professional review before wider release.
           </p>
         </div>
 
@@ -101,23 +120,13 @@ export default function Services() {
               className="flex flex-col rounded-2xl border border-gray-100 p-8 hover:shadow-md transition-shadow"
               style={{ backgroundColor: "var(--color-off-white)" }}
             >
-              <div className="text-3xl mb-5">{s.icon}</div>
               <div className="mb-1">
-                {s.badge === "active" ? (
-                  <span
-                    className="inline-block max-w-full text-xs font-semibold uppercase tracking-widest leading-snug px-2.5 py-1 rounded-full mb-3"
-                    style={{ backgroundColor: "#D1FAE5", color: "var(--color-green)" }}
-                  >
-                    Now in development — join the waitlist
-                  </span>
-                ) : (
-                  <span
-                    className="inline-block max-w-full text-xs font-semibold uppercase tracking-widest leading-snug px-2.5 py-1 rounded-full mb-3"
-                    style={{ backgroundColor: "#F3F4F6", color: "#6B7280" }}
-                  >
-                    Coming soon
-                  </span>
-                )}
+                <span
+                  className="inline-block max-w-full text-xs font-semibold uppercase tracking-widest leading-snug px-2.5 py-1 rounded-full mb-3"
+                  style={badgeStyles[s.badgeTone]}
+                >
+                  {s.status}
+                </span>
               </div>
               <h3
                 className="text-xl font-bold mb-1"
@@ -136,13 +145,13 @@ export default function Services() {
         </div>
 
         <div className="mt-12 text-center">
-          <a
-            href="#waitlist"
+          <Link
+            href="/audit"
             className="inline-flex items-center justify-center h-13 px-8 rounded-full text-base font-semibold text-white transition-opacity hover:opacity-90"
             style={{ backgroundColor: "var(--color-green)", height: "52px" }}
           >
-            Join the Waitlist
-          </a>
+            Take the Free Audit
+          </Link>
         </div>
       </div>
     </section>

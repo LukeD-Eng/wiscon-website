@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <section className="px-5 sm:px-8 py-20 sm:py-28" style={{ backgroundColor: "var(--color-white)" }}>
@@ -16,16 +18,16 @@ export default function Hero() {
             Construction already runs on WhatsApp. WISCON brings structure to it.
           </h1>
           <p className="text-lg sm:text-xl leading-relaxed mb-10 text-gray-600">
-            Your team keeps using WhatsApp like normal. WISCON turns approvals, photos, instructions, RFIs, snags, variations, and site updates into tracked workflows with a searchable record.
+            Your team keeps using WhatsApp like normal. WISCON turns approvals, photos, instructions, RFIs, snags, variations, and site updates into tracked workflows with a searchable record. The bigger direction is simple: WISCON remembers what WhatsApp forgets.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="#waitlist"
+            <Link
+              href="/audit"
               className="inline-flex items-center justify-center h-13 px-8 rounded-full text-base font-semibold text-white transition-opacity hover:opacity-90"
               style={{ backgroundColor: "var(--color-green)", height: "52px" }}
             >
-              Join the Waitlist
-            </a>
+              Take the Free Audit
+            </Link>
             <a
               href="#services"
               className="inline-flex items-center justify-center h-13 px-8 rounded-full text-base font-semibold border transition-colors hover:bg-gray-50"

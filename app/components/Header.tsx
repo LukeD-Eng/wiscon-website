@@ -18,6 +18,7 @@ export default function Header() {
 
         {/* Nav links — desktop */}
         <nav className="hidden sm:flex items-center gap-8 text-sm font-medium" style={{ color: "var(--color-black)" }}>
+          <Link href="/audit" className="hover:opacity-60 transition-opacity">Audit</Link>
           <a href="#services" className="hover:opacity-60 transition-opacity">Workflows</a>
           <a href="#why-whatsapp" className="hover:opacity-60 transition-opacity">Why WhatsApp</a>
           <a href="#pricing" className="hover:opacity-60 transition-opacity">Pricing</a>
@@ -27,13 +28,13 @@ export default function Header() {
 
         {/* CTA */}
         <div className="flex items-center gap-3">
-          <a
-            href="#waitlist"
+          <Link
+            href="/audit"
             className="hidden sm:inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white transition-opacity hover:opacity-90"
             style={{ backgroundColor: "var(--color-green)" }}
           >
-            Join Waitlist
-          </a>
+            Take Audit
+          </Link>
           {/* Mobile menu toggle */}
           <button
             className="sm:hidden p-2 -mr-2"
@@ -50,20 +51,21 @@ export default function Header() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="sm:hidden border-t border-gray-100 px-5 py-4 flex flex-col gap-4 bg-white">
+          <Link href="/audit" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Audit</Link>
           <a href="#services" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Workflows</a>
           <a href="#why-whatsapp" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Why WhatsApp</a>
           <a href="#pricing" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>Pricing</a>
           <Link href="/dashboard" className="text-sm font-medium" onClick={() => setMenuOpen(false)}>
             Dashboard
           </Link>
-          <a
-            href="#waitlist"
+          <Link
+            href="/audit"
             className="inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white"
             style={{ backgroundColor: "var(--color-green)" }}
             onClick={() => setMenuOpen(false)}
           >
-            Join Waitlist
-          </a>
+            Take Audit
+          </Link>
         </div>
       )}
     </header>
