@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
+import { timingSafeEqual } from "node:crypto";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseServiceClient } from "@/lib/supabase/service-role";
 
 type RegisterBody = {
+  inviteCode?: string;
   ownerName?: string;
   companyName?: string;
   ownerPhone?: string;
@@ -21,6 +23,57 @@ function normalizePhone(value: string) {
 
 function validEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function validInviteCode(value: string) {
+  const configuredCode = process.env.PILOT_REGISTRATION_INVITE_CODE?.trim();
+  const providedCode = value.trim();
+
+  if (!configuredCode) return null;
+
+  const configured = Buffer.from(configuredCode);
+  const provided = Buffer.from(providedCode);
+
+  return configured.length === provided.length && timingSafeEqual(configured, provided);
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function existingEmailMessage() {
+  return "That email is already registered. Sign in instead, or use Email link if you do not remember the password.";
+}
+
+function isAuthUserForeignKeyError(error: { code?: string; message?: string }) {
+  return (
+    error.code === "23503" &&
+    (error.message?.includes("account_members_auth_user_id_fkey") ?? false)
+  );
+}
+
+async function authUserExists(
+  serviceClient: ReturnType<typeof createSupabaseServiceClient>,
+  authUserId: string
+) {
+  for (const delay of [0, 150, 400]) {
+    if (delay) await sleep(delay);
+
+    const {
+      data: { user },
+      error,
+    } = await serviceClient.auth.admin.getUserById(authUserId);
+
+    if (user?.id === authUserId) return true;
+    if (!error) continue;
+
+    const status = "status" in error ? error.status : undefined;
+    if (status !== 404 && !error.message.toLowerCase().includes("not found")) {
+      throw new Error(error.message);
+    }
+  }
+
+  return false;
 }
 
 async function findExistingAccount(
@@ -50,6 +103,21 @@ async function findExistingAccount(
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json().catch(() => ({}))) as RegisterBody;
+    const inviteCodeAccepted = validInviteCode(body.inviteCode ?? "");
+
+    if (inviteCodeAccepted === null) {
+      return NextResponse.json(
+        { error: "Pilot registration is temporarily unavailable." },
+        { status: 503 }
+      );
+    }
+    if (!inviteCodeAccepted) {
+      return NextResponse.json(
+        { error: "A valid pilot invitation code is required." },
+        { status: 403 }
+      );
+    }
+
     const ownerName = clean(body.ownerName);
     const companyName = clean(body.companyName);
     const ownerPhone = normalizePhone(clean(body.ownerPhone));
@@ -92,6 +160,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Could not create dashboard user." }, { status: 400 });
     }
 
+    const verifiedAuthUser = await authUserExists(serviceClient, authData.user.id);
+    if (!verifiedAuthUser) {
+      return NextResponse.json({ error: existingEmailMessage() }, { status: 409 });
+    }
+
     let account = await findExistingAccount(serviceClient, ownerPhone, email);
 
     if (!account) {
@@ -122,7 +195,13 @@ export async function POST(request: NextRequest) {
         { onConflict: "account_id,auth_user_id" }
       );
 
-    if (memberError) throw new Error(memberError.message);
+    if (memberError) {
+      if (isAuthUserForeignKeyError(memberError)) {
+        return NextResponse.json({ error: existingEmailMessage() }, { status: 409 });
+      }
+
+      throw new Error(memberError.message);
+    }
 
     const { error: userError } = await serviceClient
       .from("users")

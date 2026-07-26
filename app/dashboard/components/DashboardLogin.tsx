@@ -12,6 +12,7 @@ export default function DashboardLogin({ configError }: { configError?: string |
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [inviteCode, setInviteCode] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [ownerPhone, setOwnerPhone] = useState("");
@@ -78,7 +79,7 @@ export default function DashboardLogin({ configError }: { configError?: string |
     const res = await fetch("/api/dashboard/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ownerName, companyName, ownerPhone, email, password }),
+      body: JSON.stringify({ inviteCode, ownerName, companyName, ownerPhone, email, password }),
     });
 
     const body = (await res.json().catch(() => ({}))) as {
@@ -122,7 +123,8 @@ export default function DashboardLogin({ configError }: { configError?: string |
           Company records
         </h1>
         <p className="mb-8 text-base leading-relaxed text-gray-600">
-          Sign in or register the company owner account for WISCON records and exports.
+          Sign in to your WISCON records and exports. New company accounts are currently
+          available by pilot invitation.
         </p>
 
         <div className="mb-6 grid grid-cols-3 rounded-md border border-gray-200 bg-gray-50 p-1 text-sm font-semibold">
@@ -147,6 +149,20 @@ export default function DashboardLogin({ configError }: { configError?: string |
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === "register" && (
             <>
+              <label className="block">
+                <span className="mb-2 block text-sm font-medium text-gray-700">
+                  Pilot invitation code
+                </span>
+                <input
+                  type="password"
+                  value={inviteCode}
+                  onChange={(event) => setInviteCode(event.target.value)}
+                  required
+                  autoComplete="one-time-code"
+                  className="h-12 w-full rounded-md border border-gray-300 px-4 text-base outline-none transition focus:border-brand-green focus:ring-2 focus:ring-brand-green/15"
+                  placeholder="Provided by WISCON"
+                />
+              </label>
               <label className="block">
                 <span className="mb-2 block text-sm font-medium text-gray-700">Owner name</span>
                 <input
